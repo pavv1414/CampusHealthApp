@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Emergency — Chat</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="left">
+      <img src="rrr.jpg" alt="Logo" class="logo" />
+      <div>
+        <div class="title">Campus EMS</div>
+        <div class="small" id="userAtTop"></div>
+      </div>
+    </div>
+    <div>
+      <button id="backHome" class="btn-back">Back</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="card">
+      <h1>Start Emergency Chat</h1>
+      <p class="sub">
+        Open the GenAI-powered campus medical assistant. Paste the Logic App URL below to send a test alert directly.
+      </p>
+
+      <button id="startChatBtn" class="btn-emergency">
+        <span>Open Emergency Chat</span>
+      </button>
+
+      <div id="webchat" class="webchat-container"></div>
+
+      <div class="logic-alert">
+        <label>Logic App URL (optional):</label>
+        <input id="logicAppUrl" type="url" placeholder="Paste Logic App URL if needed" />
+
+        <label>Enter Your Name:</label>
+        <input id="name" type="text" placeholder="Your Name" />
+
+        <label>Select Location:</label>
+        <select id="location">
+          <option value="">-- Choose Location --</option>
+          <option value="Rec Cafe">Rec Cafe</option>
+          <option value="Rec Hut">Rec Hut</option>
+          <option value="Rec Park">Rec Park</option>
+          <option value="Idea Factory">Idea Factory</option>
+        </select>
+
+        <label>Select Issue:</label>
+        <select id="issue">
+          <option value="">-- Choose Issue --</option>
+          <option value="Cold">Cold</option>
+          <option value="Fever">Fever</option>
+          <option value="Dog Bite">Dog Bite</option>
+          <option value="Headache">Headache</option>
+          <option value="Sprain">Sprain</option>
+          <option value="Passed Out">Passed Out</option>
+          <option value="Fatigue">Fatigue</option>
+        </select>
+
+        <div class="alert-actions">
+          <button id="sendTestAlert" class="btn-send">Send Test Alert</button>
+          <div id="alertResult" class="small"></div>
+        </div>
+        <div id="status" class="small"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
