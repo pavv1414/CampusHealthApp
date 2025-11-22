@@ -6,15 +6,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: read
+  id-token: write
 
 env:
   AZURE_CONTAINER_REGISTRY: campusemsregistry.azurecr.io
   IMAGE_NAME: campus-ems
   APP_SERVICE_NAME: campus-ems-docker
   RESOURCE_GROUP: CampusHealthAppRG
-  LOCATION: centralindia
 
 jobs:
   build-and-deploy:
@@ -30,10 +29,12 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: federated
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          auth-type: SERVICE_PRINCIPAL
 
       - name: Log in to Azure Container Registry
-        run: az acr login --name campusemsregistry
+        run: |
+          az acr login --name campusemsregistry
 
       - name: Build Docker image
         run: |
