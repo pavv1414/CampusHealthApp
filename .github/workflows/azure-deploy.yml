@@ -2,8 +2,8 @@ name: Build and Deploy Campus EMS to Azure App Service
 
 on:
   push:
-    branches:
-      - main  # or master — change if needed
+    branches: [ "main" ]
+  workflow_dispatch:
 
 env:
   AZURE_CONTAINER_REGISTRY: campusemsregistry.azurecr.io
