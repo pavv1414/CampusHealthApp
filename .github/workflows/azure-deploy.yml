@@ -9,8 +9,6 @@ env:
   AZURE_CONTAINER_REGISTRY: campusemsregistry.azurecr.io
   IMAGE_NAME: campus-ems
   APP_SERVICE_NAME: campus-ems-docker
-  RESOURCE_GROUP: CampusHealthAppRG
-  LOCATION: centralindia
 
 jobs:
   build-and-deploy:
@@ -26,11 +24,14 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
 
       - name: Log in to Azure Container Registry
-        run: |
-          az acr login --name campusemsregistry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.AZURE_CONTAINER_REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Build Docker image
         run: |
@@ -45,3 +46,4 @@ jobs:
         with:
           app-name: ${{ env.APP_SERVICE_NAME }}
           images: ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
