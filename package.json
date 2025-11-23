@@ -6,6 +6,19 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
-  }
+    "express": "^4.21.2"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavv1414/CampusHealthApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pavv1414/CampusHealthApp/issues"
+  },
+  "homepage": "https://github.com/pavv1414/CampusHealthApp#readme"
 }
