@@ -11,7 +11,7 @@ permissions:
 env:
   AZURE_CONTAINER_REGISTRY: campusemsregistry.azurecr.io
   IMAGE_NAME: campus-ems
-  APP_SERVICE_NAME: campus-ems-docker
+  APP_SERVICE_NAME: campus-ems-app
   RESOURCE_GROUP: CampusHealthAppRG
 
 jobs:
